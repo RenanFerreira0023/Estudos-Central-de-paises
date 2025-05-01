@@ -1,6 +1,6 @@
-import { Card, Footer, Header } from './componets/index'
+import { Card, Footer, Header ,Grid } from './componets/index'
 
-const regioes = [
+const countires = [
   {
     id: 1,
     pais: 'Brasil',
@@ -80,17 +80,16 @@ export default function Home() {
     <>
       <Header />
       <main className="flex-1">
-      <Card id={regioes[0].id} pais={regioes[0].pais} capital={regioes[0].capital} regiao={regioes[0].regiao} populacao={regioes[0].populacao} />
-      <Card id={regioes[1].id} pais={regioes[1].pais} capital={regioes[1].capital} regiao={regioes[1].regiao} populacao={regioes[1].populacao} />
-      <Card id={regioes[2].id} pais={regioes[2].pais} capital={regioes[2].capital} regiao={regioes[2].regiao} populacao={regioes[2].populacao} />
-      <Card id={regioes[3].id} pais={regioes[3].pais} capital={regioes[3].capital} regiao={regioes[3].regiao} populacao={regioes[3].populacao} />
-      <Card id={regioes[4].id} pais={regioes[4].pais} capital={regioes[4].capital} regiao={regioes[4].regiao} populacao={regioes[4].populacao} />
-      <Card id={regioes[5].id} pais={regioes[5].pais} capital={regioes[5].capital} regiao={regioes[5].regiao} populacao={regioes[5].populacao} />
-      <Card id={regioes[6].id} pais={regioes[6].pais} capital={regioes[6].capital} regiao={regioes[6].regiao} populacao={regioes[6].populacao} />
-      <Card id={regioes[7].id} pais={regioes[7].pais} capital={regioes[7].capital} regiao={regioes[7].regiao} populacao={regioes[7].populacao} />
-      <Card id={regioes[8].id} pais={regioes[8].pais} capital={regioes[8].capital} regiao={regioes[8].regiao} populacao={regioes[8].populacao} />
-      <Card id={regioes[9].id} pais={regioes[9].pais} capital={regioes[9].capital} regiao={regioes[9].regiao} populacao={regioes[9].populacao} />
-
+          <Grid>
+            {countires.map(({ id, pais, capital, regiao, populacao }) => (
+              <Card
+                key={id}
+                pais={pais}
+                capital={capital}
+                regiao={regiao}
+                populacao={populacao} />
+            ))}
+          </Grid>
       </main>
       <Footer />
     </>

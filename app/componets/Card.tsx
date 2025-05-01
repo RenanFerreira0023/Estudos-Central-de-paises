@@ -1,13 +1,12 @@
 type CardProps ={
-    id: number,
     pais: string,
     capital: string,
     regiao: string,
     populacao: string,
 }
-const Card = ({id, pais, capital, regiao, populacao}: CardProps )  => {
+const Card = ({ pais, capital, regiao, populacao}: CardProps )  => {
     return (
-        <div id={id.toString()} className="h-full overflow-hidden bg-white rounded-lg shadow-lg">
+        <div className="h-full overflow-hidden bg-white rounded-lg shadow-lg">
             <div className=" aspect-video w-full">
                 <img  src="https://placehold.co/600x400" className="w-full h-full object-cover"/>
             </div>
