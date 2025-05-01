@@ -2,6 +2,8 @@
 import { useEffect, useState } from 'react';
 import { Card, Footer, Header, Grid } from './componets/index';
 
+import {countriesApi} from "./services"
+
 type Country = {
   cca3: string;
   flags: {
@@ -24,18 +26,15 @@ export default function Home() {
 
   useEffect(() => {
     const fetchcountries = async () => {
-      try {
-        const response = await fetch("https://restcountries.com/v3.1/all?fields=cca3,flags,name,capital,region,population");
-        const data = await response.json();
-        console.log(data);
-        setCountries(data);
-        setLoading(false); // Após a requisição, setamos loading como false
-      } catch (error) {
-        setError(`Deu um erro: ${error}`);
-        console.log(error)
-        setLoading(false); // Mesmo em caso de erro, setamos loading como false
+      const[response,error] = await countriesApi.getAll() 
+        setLoading(false)
+      if(error){
+        setError(error)
+        return;
       }
-    };
+      setCountries(response)
+
+      };
 
     fetchcountries();
   }, []);
