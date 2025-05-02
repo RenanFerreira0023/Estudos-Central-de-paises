@@ -80,21 +80,21 @@ export default function Country() {
         borders
     } = country ?? {};
 
-    const { svg:flag } = flags ?? {};
+    const { svg: flag } = flags ?? {};
     const { common: countryName } = name ?? {};
-    const capitalName = capital??[];
+    const capitalName = capital ?? [];
 
 
     const languagesNames = Object.values(languages ?? {}).join(", ");
 
 
     const currenciesNames = (Object.values(currencies ?? {}) as { name: string; symbol: string }[])
-    .map(({ name, symbol }) => `${name} (${symbol})`)
-    .join(", ");
-  
+        .map(({ name, symbol }) => `${name} (${symbol})`)
+        .join(", ");
 
-    const topLevelDomainNames = tld ??[];
-    const bordersIds = borders?.join(", ")?? ""
+
+    const topLevelDomainNames = tld ?? [];
+    const bordersIds = borders ?? [];
 
 
     return (
@@ -111,7 +111,7 @@ export default function Country() {
                 <div className="flex items-center md:max-w-[400px]">
                     <Image
                         className="max-h-80 object-cover rounded-lg"
-                        src={flag ||'/flag-placeholder.svg'}
+                        src={flag || '/flag-placeholder.svg'}
                         alt={`Flag ${name}`}
                         width={500}
                         height={300}
@@ -121,40 +121,40 @@ export default function Country() {
                 </div>
 
 
-                <div className="flex flex-col justify-center p-6 text=sm text-gray-600">
+                <div className="flex flex-col justify-center p-6 text-sm text-gray-600">
                     <h2 className="text-xl font-semibold mb-4">{countryName} {id}</h2>
                     <div className="space-y-2">
-                        <div className="flex items-center gap-1">
-                            <span className="font-semibold">Capita:</span>
-                            <span>{capitalName}</span>
-                        </div>
-                        <div className="flex items-center gap-1">
-                            <span className="font-semibold">Região:</span>
-                            <span>{region}</span>
-                        </div>
-                        <div className="flex items-center gap-1">
-                            <span className="font-semibold">População:</span>
-                            <span>{population}</span>
-                        </div>
 
-                        <div className="flex items-center gap-1">
-                            <span className="font-semibold">Lingua:</span>
-                            <span>{languagesNames}</span>
+                        <div>
+                            <span className="font-semibold">Capita:</span> {capitalName}
                         </div>
-
-                        <div className="flex items-center gap-1">
-                            <span className="font-semibold">Moeda:</span>
-                            <span>{currenciesNames}</span>
+                        <div>
+                            <span className="font-semibold">Região:</span> {region}
                         </div>
-
-                        <div className="flex items-center gap-1">
-                            <span className="font-semibold">Nivel de domino:</span>
-                            <span>{topLevelDomainNames}</span>
+                        <div>
+                            <span className="font-semibold">População:</span> {population}
                         </div>
+                        <div>
+                            <span className="font-semibold">Lingua:</span> {languagesNames}
+                        </div>
+                        <div>
+                            <span className="font-semibold">Moeda:</span> {currenciesNames}
+                        </div>
+                        <div>
+                            <span className="font-semibold">Nivel de domino:</span> {topLevelDomainNames}
+                        </div>
+                        <div className="md:max-w-80">
+                            <span className="font-semibold">Fronteira:</span>{""}
+                            {bordersIds.length > 0
+                                ? bordersIds.map((borderId) => (
+                                    <Link key={borderId} href={`/country/${borderId}`}>
+                                        <button className="bg-gray-200 hover:bg-gray-300 font-semibold mb-[6px]  mr-[6px] px-[6px] py-[1.5px] rounded text-xs">
+                                            {borderId}
+                                        </button>
+                                    </Link>
 
-                        <div className="flex items-center gap-1">
-                            <span className="font-semibold">Fronteira:</span>
-                            <span>{bordersIds}</span>
+                                ))
+                                : 'None'}
                         </div>
 
 

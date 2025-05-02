@@ -24,17 +24,14 @@ const Card = ({ index,flags, name, capital, region, population }: CardProps) => 
             <div className="p-6 text=sm text-gray-600">
                 <h2 className="text-xl font-semibold mb-4">{name}</h2>
                 <div className="space-y-2">
-                    <div className="flex items-center gap-1">
-                        <span className="font-semibold">Capita:</span>
-                        <span>{capital}</span>
+                    <div>
+                        <span className="font-semibold">Capita:</span> {capital}
                     </div>
-                    <div className="flex items-center gap-1">
-                        <span className="font-semibold">Região:</span>
-                        <span>{region}</span>
+                    <div>
+                        <span className="font-semibold">Região:</span> {region}
                     </div>
-                    <div className="flex items-center gap-1">
-                        <span className="font-semibold">População:</span>
-                        <span>{population}</span>
+                    <div>
+                        <span className="font-semibold">População:</span> {population}
                     </div>
                 </div>
             </div>
