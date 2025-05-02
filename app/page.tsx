@@ -1,8 +1,9 @@
 'use client';
 import { useEffect, useState } from 'react';
 import { Card, Footer, Header, Grid } from './componets/index';
+import { countriesApi } from "./services"
+import Link from 'next/link';
 
-import {countriesApi} from "./services"
 
 type Country = {
   cca3: string;
@@ -26,15 +27,15 @@ export default function Home() {
 
   useEffect(() => {
     const fetchcountries = async () => {
-      const[response,error] = await countriesApi.getAll() 
-        setLoading(false)
-      if(error){
+      const [response, error] = await countriesApi.getAll()
+      setLoading(false)
+      if (error) {
         setError(error)
         return;
       }
       setCountries(response)
 
-      };
+    };
 
     fetchcountries();
   }, []);
@@ -53,17 +54,18 @@ export default function Home() {
             const { svg } = flags ?? {};
             const { common: countryName } = name ?? {};
             const capitalName = capital[0];
-
             return (
-              <Card
-                key={cca3}
-                index={index}
-                flags={svg}
-                name={countryName}
-                capital={capitalName}
-                region={region}
-                population={population}
-              />
+              <Link key={cca3} href={`/country/${cca3}`}>
+                <Card
+                  //   key={cca3}
+                  index={index}
+                  flags={svg}
+                  name={countryName}
+                  capital={capitalName}
+                  region={region}
+                  population={population}
+                />
+              </Link>
             );
           })}
         </Grid>
