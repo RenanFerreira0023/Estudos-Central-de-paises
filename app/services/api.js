@@ -24,7 +24,7 @@ const countriesApi = {
   getAll: () =>
     api.get(`/all?fields=${baseFiltes}`),
 
-  getCountry:(id) => api.get(`/alpha/${id}?fields=${baseFiltes},lenguages,currencies,tld,borders`),
+  getCountry:(id) => api.get(`/alpha/${id}?fields=${baseFiltes},languages,currencies,tld,borders`),
 
 
 };

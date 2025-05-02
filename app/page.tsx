@@ -20,7 +20,6 @@ type Country = {
 
 export default function Home() {
   const [countries, setCountries] = useState<Country[]>([]);
-
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null);
 
