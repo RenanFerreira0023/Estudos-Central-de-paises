@@ -19,10 +19,14 @@ const ApiClient = (baseUrl) => ({
 
 const api = ApiClient("https://restcountries.com/v3.1");
 
+const baseFiltes = 'cca3,flags,name,capital,region,population';
 const countriesApi = {
   getAll: () =>
-    api.get("/all?fields=cca3,flags,name,capital,region,population"),
-  getCountry:() => api.get("/name/{name")
+    api.get(`/all?fields=${baseFiltes}`),
+
+  getCountry:(id) => api.get(`/alpha/${id}?fields=${baseFiltes},lenguages,currencies,tld,borders`),
+
+
 };
 
 export { countriesApi };
